@@ -1,12 +1,32 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+
 app.use(bodyParser.json);
 
 const mockUserData = [
     {name: 'Mark'},
     {name: 'Jill'}
 ]
+
+
+app.get('/users', function(req, res){
+    res.json({
+        success: true,
+        message: 'sucessfully got users',
+        users: mockUserData
+    })
+})
+
+app.get('/users/:id', function(req, res){
+    console.log(req.params.id)
+    res.json({
+        success: true,
+        message: 'Successfully got one user!',
+        users: req.params.id
+    })
+})
+
 
 app.post('/login', function(req, res){
     const username=req.body.username;
@@ -28,17 +48,6 @@ app.post('/login', function(req, res){
         })
     }
 })
-
-app.get('/users/:id', function(req, res){
-    console.log(req.params.id)
-    res.json({
-        success: true,
-        message: 'Successfully got one user!',
-        users: req.params.id
-    })
-})
-
-
 
 //Nothing below this line... yet
 app.listen(8000, function(){
