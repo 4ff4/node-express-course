@@ -17,7 +17,7 @@ app.get('/users', function(req, res){
         users: mockUserData
     })
 })
-
+/*
 app.get('/users/:id', function(req, res){
     console.log(req.params.id)
     res.json({
@@ -48,6 +48,7 @@ app.post('/login', function(req, res){
         })
     }
 })
+*/
 
 //Nothing below this line... yet
 app.listen(8000, function(){
